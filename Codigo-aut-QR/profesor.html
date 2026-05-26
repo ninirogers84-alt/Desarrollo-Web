@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Profesor - Sistema de Turnos</title>
+    <link rel="stylesheet" href="css/estilo-profesor.css">
+</head>
+<body>
+    <div class="container">
+        <h1> Panel del Profesor - Control Administrativo</h1>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3> Turno Actual</h3>
+                <div class="stat-number" id="turnoActual">1</div>
+            </div>
+            <div class="stat-card">
+                <h3> Alumnos en Espera</h3>
+                <div class="stat-number" id="alumnosEspera">0</div>
+            </div>
+            <div class="stat-card">
+                <h3> Atendiendo Turno</h3>
+                <div class="stat-number" id="atendiendoTurno">0</div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2> Formulario de Control</h2>
+            
+            <div class="input-group">
+                <label for="turnoAtender">Turno a atender:</label>
+                <input type="number" id="turnoAtender" min="1" max="100" value="1">
+            </div>
+
+            <div class="checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="listoSiguiente">
+                     Listo para el siguiente número
+                </label>
+            </div>
+
+            <button onclick="actualizarEstado()">Actualizar Estado</button>
+            <button onclick="enviarCorreoSiguiente()" class="secondary-btn" id="btnEnviarCorreo">
+                 Enviar Correo al Siguiente
+            </button>
+            <button onclick="reiniciarTurnos()" class="danger-btn">🔄 Reiniciar Turnos</button>
+        </div>
+
+        <div class="lista-container">
+            <h2> Listado de Alumnos Registrados</h2>
+            <div class="table-responsive">
+                <table id="tablaAlumnos">
+                    <thead>
+                        <tr>
+                            <th>Turno</th>
+                            <th>Correo</th>
+                            <th>Estado</th>
+                            <th>Hora Registro</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAlumnos">
+                        <!-- Se llena con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="js/profesor.js"></script>
+</body>
+</html>

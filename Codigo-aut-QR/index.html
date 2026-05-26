@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Turnos - Alumnos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1> Sistema de Turnos Universitario</h1>
+        <h2>Escanea el QR para obtener tu turno</h2>
+        
+        <div class="qr-container">
+            <div id="qrcode"></div>
+        </div>
+
+        <div class="input-group">
+            <label for="email"> Correo Institucional:</label>
+            <input type="email" id="email" placeholder="ejemplo@universidad.edu" required>
+        </div>
+
+        <button id="registrarBtn" onclick="registrarAlumno()">Registrar y Obtener Turno</button>
+
+        <div id="turnoDisplay" class="turno-info" style="display: none;">
+            Tu turno es: <span id="turnoNumero" class="turno-number">0</span>
+        </div>
+
+        <div id="message" class="message"></div>
+        
+        <div class="footer">
+            Sistema de Turnos v1.0 | Gestión Administrativa
+        </div>
+    </div>
+
+    <script src="js/turnos.js"></script>
+</body>
+</html>
