@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>StudyKanban · Tablero Kanban Interactivo</title>
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="kanban-container">
+        <!-- HEADER -->
+        <div class="kanban-header">
+            <div class="header-icon">
+                <i class="fas fa-columns"></i>
+            </div>
+            <h1>Tablero Kanban</h1>
+            <p>Arrastra y suelta las tareas entre columnas · Organiza tu flujo de trabajo</p>
+        </div>
+
+        <div class="priority-filters">
+            <button class="filter-btn active" data-filter="all"> Todas</button>
+            <button class="filter-btn" data-filter="alta">🔴 Alta prioridad</button>
+            <button class="filter-btn" data-filter="media">🟡 Media prioridad</button>
+            <button class="filter-btn" data-filter="baja">🟢 Baja prioridad</button>
+        </div>
+
+        <div class="add-task-button-container">
+            <button id="addTaskBtn" class="add-task-btn">
+                <i class="fas fa-plus"></i> Nueva tarea
+            </button>
+        </div>
+
+        <div class="kanban-board">
+            <div class="kanban-col" data-status="todo">
+                <div class="col-header">
+                    <div class="col-title">
+                        <i class="fas fa-clipboard-list"></i>
+                        Por hacer
+                    </div>
+                    <span class="task-count" id="todoCount">0</span>
+                </div>
+                <div class="tasks-list" id="todoList"></div>
+            </div>
+
+            <div class="kanban-col" data-status="doing">
+                <div class="col-header">
+                    <div class="col-title">
+                        <i class="fas fa-spinner fa-pulse"></i>
+                        En proceso
+                    </div>
+                    <span class="task-count" id="doingCount">0</span>
+                </div>
+                <div class="tasks-list" id="doingList"></div>
+            </div>
+
+            <div class="kanban-col" data-status="done">
+                <div class="col-header">
+                    <div class="col-title">
+                        <i class="fas fa-check-circle"></i>
+                        Listo
+                    </div>
+                    <span class="task-count" id="doneCount">0</span>
+                </div>
+                <div class="tasks-list" id="doneList"></div>
+            </div>
+        </div>
+
+        <div class="kanban-stats">
+            <div class="stat-item">
+                <i class="fas fa-tasks"></i>
+                <span id="totalTasks">0</span> tareas totales
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-check-circle"></i>
+                <span id="completedTasks">0</span> completadas
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-chart-line"></i>
+                Progreso: <span id="progressPercent">0</span>%
+            </div>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus-circle"></i> Nueva tarea</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Título de la tarea</label>
+                    <input type="text" id="taskTitle" placeholder="Ej: Revisar apuntes de álgebra" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Materia / Asignatura</label>
+                    <input type="text" id="taskSubject" placeholder="Ej: Matemáticas, Historia, Programación" autocomplete="off">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Prioridad</label>
+                        <select id="taskPriority">
+                            <option value="alta">🔴 Alta</option>
+                            <option value="media" selected>🟡 Media</option>
+                            <option value="baja">🟢 Baja</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha límite</label>
+                        <input type="date" id="taskDate">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancelModalBtn">Cancelar</button>
+                <button class="btn-save" id="saveTaskBtn">Agregar tarea</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
